@@ -33,12 +33,15 @@ public class HashTagTokenizer {
         if (hashtag.isEmpty()) {
             return;
         }
- 
         int N = hashtag.length();
-
+		hashtag = hashtag.toLowerCase();
         for (int i = 1; i <= N; i++) {
-		
+			String minString = hashtag.substring(0,i-1);
+			if(existInDictionary(minString, dictionary)){
+				System.out.println(minString);
+				String subString1 = hashtag.substring(i);
+				breakHashTag(subString1, dictionary);
+			}
         }
     }
-
 }
