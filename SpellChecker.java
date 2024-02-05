@@ -22,7 +22,7 @@ public class SpellChecker {
         int len2 = word2.length();
         if (len1 == 0) return len2;
         if (len2 == 0) return len1;
-        int cost = (word1.charAt(0) == word2.charAt(0)) ? 0 : 1;
+        int cost = (Character.toLowerCase(word1.charAt(0)) == Character.toLowerCase(word2.charAt(0))) ? 0 : 1;
         int delete = levenshtein(tail(word1), word2) + 1;
         int insert = levenshtein(word1, tail(word2)) + 1;
         int substitute = levenshtein(tail(word1), tail(word2)) + cost;
@@ -39,7 +39,6 @@ public class SpellChecker {
 	}
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
-		// Your code goes here
         String closestWord = word;
         int minDistance = Integer.MAX_VALUE;
         for (String dictWord : dictionary) {
